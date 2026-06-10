@@ -1,20 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle, Monitor, Copyright, AlertTriangle, Shield, Gavel } from 'lucide-react';
-import { BrainSide } from '../components/BrainViz';
-
-const sections = [
-  'Acceptance of Terms',
-  'Use of the Website',
-  'Intellectual Property',
-  'User Responsibilities',
-  'Disclaimers',
-  'Limitation of Liability',
-  'Indemnification',
-  'Termination',
-  'Governing Law',
-  'Changes to Terms',
-  'Contact Us'
-];
+import { CheckCircle, Monitor, Copyright, AlertTriangle, Shield, Gavel, Check } from 'lucide-react';
 
 const termItems = [
   {
@@ -50,53 +35,32 @@ const termItems = [
 ];
 
 export default function TermsOfUse() {
-  const [active, setActive] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("neuraxcognitivesolutions@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="pt-[70px]">
       {/* Hero */}
-      <section className="hero-gradient py-12 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-3">Legal</p>
-            <h1 className="text-slate-900 text-4xl font-bold mb-3">Terms & Conditions</h1>
-            <p className="text-slate-500 text-sm mb-4">Last updated: May 20, 2025</p>
-            <p className="text-slate-655 text-sm leading-relaxed max-w-lg">
-              Welcome to NeuraX Cognitive Solutions Pvt. Ltd. ("NeuraX"). By accessing or using our website and services, you agree to be bound by these Terms & Conditions.
-            </p>
-          </div>
-          <div className="flex justify-end">
-            <div className="w-full max-w-[320px] md:max-w-[400px] aspect-[16/9] rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm bg-white">
-              <img 
-                src="/assets/client_terms_hero.png" 
-                alt="Terms & Conditions Document" 
-                className="w-full h-full object-cover" 
-              />
-            </div>
-          </div>
+      <section className="hero-gradient py-16 border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+          <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-3">Legal</p>
+          <h1 className="text-slate-900 text-4xl font-bold mb-4">Terms & Conditions</h1>
+          <p className="text-slate-655 text-sm leading-relaxed max-w-xl">
+            Welcome to NeuraX Cognitive Solutions Pvt. Ltd. ("NeuraX"). By accessing or using our website and services, you agree to be bound by these Terms & Conditions.
+          </p>
         </div>
       </section>
 
       {/* Content */}
       <section className="py-16 relative overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-8 relative z-10">
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="glass-panel rounded-2xl p-4 sticky top-24 bg-slate-50/50">
-              {sections.map((s, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`w-full text-left text-sm py-2 px-3 rounded mb-1 transition-colors ${active === i ? 'bg-blue-600 text-white font-semibold' : 'text-slate-650 hover:bg-slate-100 hover:text-slate-900'}`}
-                >
-                  {i + 1}. {s}
-                </button>
-              ))}
-            </div>
-          </div>
-
+        <div className="max-w-3xl mx-auto px-6 relative z-10">
           {/* Main */}
-          <div className="lg:col-span-3">
+          <div className="w-full">
             <div className="glass-panel rounded-2xl p-8 md:p-10 bg-white">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 {termItems.map((item, i) => (
@@ -132,7 +96,17 @@ export default function TermsOfUse() {
                 </div>
                 <div>
                   <h3 className="text-slate-900 font-bold mb-1">11. Contact Us</h3>
-                  <p>For questions about these Terms, contact us at: <span className="text-blue-600 font-semibold">neuraxcognitivesolutions@gmail.com</span></p>
+                  <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    For questions about these Terms, contact us at:
+                    <span className="inline-flex items-center gap-2">
+                      <button type="button" onClick={handleCopyEmail} className="text-blue-600 font-semibold hover:text-blue-800 transition-colors cursor-pointer" title="Click to copy email">neuraxcognitivesolutions@gmail.com</button>
+                      {copied && (
+                        <span className="inline-flex items-center gap-1 text-emerald-600 text-xs font-bold transition-all duration-300">
+                          <Check size={14} className="stroke-[3]" /> Copied!
+                        </span>
+                      )}
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>

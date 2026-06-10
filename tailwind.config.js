@@ -5,20 +5,20 @@ export default {
     extend: {
       colors: {
         brandBg: '#f5f7fa',
-        brandLight: '#e0edf7',
-        brandDark: '#17222B',
+        brandLight: '#d6e9fe',
+        brandDark: '#162129',
         blue: {
-          50: '#f1f6fa',
-          100: '#e0edf7',
-          200: '#b9daf2',
-          300: '#8ec4ec',
-          400: '#5faee3',
-          500: '#3984d7',
-          600: '#2561cd',
-          700: '#1c4a9d',
-          800: '#253441',
-          900: '#17222B',
-          950: '#0e151b',
+          50: '#f1f7fe',
+          100: '#d6e9fe',
+          200: '#a3d2fd',
+          300: '#7cbdfe',
+          400: '#51ACFC',
+          500: '#014DFC',
+          600: '#014DFC',
+          700: '#013ba0',
+          800: '#21303c',
+          900: '#162129',
+          950: '#0d1419',
         }
       }
     },

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Brain, Database, Shield, TrendingUp, Info, Mail, Settings, Users, Rocket } from 'lucide-react';
+import { ArrowRight, Brain, Database, Shield, TrendingUp, Info, Mail, Settings, Users, Rocket, Check } from 'lucide-react';
 
 interface HomeProps {
   setCurrentPage: (page: string) => void;
@@ -7,6 +7,13 @@ interface HomeProps {
 
 export default function Home({ setCurrentPage }: HomeProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("neuraxcognitivesolutions@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const steps = [
     { icon: <Settings size={20} />, label: 'Research & Development', desc: 'Building and refining our technologies with scientific rigor.' },
@@ -18,10 +25,10 @@ export default function Home({ setCurrentPage }: HomeProps) {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-[70px] pb-12 relative overflow-hidden bg-brandBg w-full border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative z-10">
+      <section className="pt-[70px] pb-12 lg:pb-0 relative overflow-hidden bg-brandBg w-full border-b border-slate-100 lg:min-h-[500px] flex items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative lg:static z-10">
           {/* Text in left column */}
-          <div className="order-1 lg:order-1 flex flex-col items-start">
+          <div className="order-1 lg:order-1 flex flex-col items-start relative z-20">
             <h1 className="text-slate-900 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 tracking-tight">
               Intelligence Today.<br />
               Recovery for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Tomorrow.</span>
@@ -36,18 +43,19 @@ export default function Home({ setCurrentPage }: HomeProps) {
           </div>
 
           {/* Client illustration photo in right column */}
-          <div className="order-2 lg:order-2 block w-full h-[300px] sm:h-[380px] lg:h-[400px] relative overflow-hidden rounded-2xl">
+          <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
               src="/assets/client_futuristic_lab.jpg" 
               alt="NeuraX Neural Technology Laboratory" 
-              className="w-full h-full object-cover" 
+              className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
             />
             {/* Soft Blending Gradients to dissolve into the background */}
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-brandBg to-transparent pointer-events-none lg:block hidden" />
-            <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-brandBg/60 to-transparent pointer-events-none lg:hidden block" />
-            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-brandBg via-brandBg/40 to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-brandLight/80 to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-brandBg/60 to-transparent pointer-events-none" />
+            <div 
+              className="absolute inset-y-0 left-0 w-1/3 pointer-events-none lg:block hidden" 
+              style={{
+                background: 'linear-gradient(to right, #f5f7fa 0%, #f5f7fa 10%, rgba(245, 247, 250, 0.8) 30%, transparent 100%)'
+              }}
+            />
           </div>
         </div>
       </section>
@@ -216,38 +224,38 @@ export default function Home({ setCurrentPage }: HomeProps) {
                 </defs>
                 
                 {/* Connecting lines */}
-                <line x1="120" y1="180" x2="160" y2="130" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="160" y1="130" x2="190" y2="170" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="190" y1="170" x2="150" y2="200" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="150" y1="200" x2="120" y2="180" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="120" y1="180" x2="190" y2="170" stroke="#5faee3" strokeWidth="0.5" opacity="0.3" />
-                <line x1="160" y1="130" x2="150" y2="200" stroke="#5faee3" strokeWidth="0.5" opacity="0.3" />
+                <line x1="120" y1="180" x2="160" y2="130" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="160" y1="130" x2="190" y2="170" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="190" y1="170" x2="150" y2="200" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="150" y1="200" x2="120" y2="180" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="120" y1="180" x2="190" y2="170" stroke="#51ACFC" strokeWidth="0.5" opacity="0.3" />
+                <line x1="160" y1="130" x2="150" y2="200" stroke="#51ACFC" strokeWidth="0.5" opacity="0.3" />
 
-                <line x1="80" y1="140" x2="120" y2="180" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="80" y1="140" x2="110" y2="90" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="110" y1="90" x2="160" y2="130" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
+                <line x1="80" y1="140" x2="120" y2="180" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="80" y1="140" x2="110" y2="90" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="110" y1="90" x2="160" y2="130" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
                 
-                <line x1="150" y1="70" x2="110" y2="90" stroke="#5faee3" strokeWidth="0.8" opacity="0.4" />
-                <line x1="150" y1="70" x2="160" y2="130" stroke="#5faee3" strokeWidth="0.8" opacity="0.4" />
-                <line x1="150" y1="70" x2="195" y2="80" stroke="#5faee3" strokeWidth="0.5" opacity="0.3" />
-                <line x1="195" y1="80" x2="160" y2="130" stroke="#5faee3" strokeWidth="0.5" opacity="0.3" />
+                <line x1="150" y1="70" x2="110" y2="90" stroke="#51ACFC" strokeWidth="0.8" opacity="0.4" />
+                <line x1="150" y1="70" x2="160" y2="130" stroke="#51ACFC" strokeWidth="0.8" opacity="0.4" />
+                <line x1="150" y1="70" x2="195" y2="80" stroke="#51ACFC" strokeWidth="0.5" opacity="0.3" />
+                <line x1="195" y1="80" x2="160" y2="130" stroke="#51ACFC" strokeWidth="0.5" opacity="0.3" />
                 
-                <line x1="50" y1="170" x2="80" y2="140" stroke="#5faee3" strokeWidth="0.6" opacity="0.4" />
-                <line x1="50" y1="170" x2="100" y2="190" stroke="#5faee3" strokeWidth="0.6" opacity="0.4" />
-                <line x1="100" y1="190" x2="120" y2="180" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
-                <line x1="100" y1="190" x2="150" y2="200" stroke="#5faee3" strokeWidth="0.8" opacity="0.5" />
+                <line x1="50" y1="170" x2="80" y2="140" stroke="#51ACFC" strokeWidth="0.6" opacity="0.4" />
+                <line x1="50" y1="170" x2="100" y2="190" stroke="#51ACFC" strokeWidth="0.6" opacity="0.4" />
+                <line x1="100" y1="190" x2="120" y2="180" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
+                <line x1="100" y1="190" x2="150" y2="200" stroke="#51ACFC" strokeWidth="0.8" opacity="0.5" />
                 
                 {/* Glowing node circles */}
-                <circle cx="120" cy="180" r="3.5" fill="#5faee3" filter="url(#svg-glow-connect-light)" />
-                <circle cx="160" cy="130" r="4.5" fill="#2561cd" filter="url(#svg-glow-connect-light)" />
-                <circle cx="190" cy="170" r="3" fill="#2561cd" filter="url(#svg-glow-connect-light)" />
-                <circle cx="150" cy="200" r="3.5" fill="#5faee3" filter="url(#svg-glow-connect-light)" />
-                <circle cx="80" cy="140" r="3.5" fill="#2561cd" filter="url(#svg-glow-connect-light)" />
-                <circle cx="110" cy="90" r="2.5" fill="#5faee3" filter="url(#svg-glow-connect-light)" />
-                <circle cx="150" cy="70" r="3" fill="#2561cd" filter="url(#svg-glow-connect-light)" />
-                <circle cx="195" cy="80" r="2" fill="#5faee3" filter="url(#svg-glow-connect-light)" />
-                <circle cx="50" cy="170" r="2.5" fill="#2561cd" filter="url(#svg-glow-connect-light)" />
-                <circle cx="100" cy="190" r="3" fill="#2561cd" filter="url(#svg-glow-connect-light)" />
+                <circle cx="120" cy="180" r="3.5" fill="#51ACFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="160" cy="130" r="4.5" fill="#014DFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="190" cy="170" r="3" fill="#014DFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="150" cy="200" r="3.5" fill="#51ACFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="80" cy="140" r="3.5" fill="#014DFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="110" cy="90" r="2.5" fill="#51ACFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="150" cy="70" r="3" fill="#014DFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="195" cy="80" r="2" fill="#51ACFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="50" cy="170" r="2.5" fill="#014DFC" filter="url(#svg-glow-connect-light)" />
+                <circle cx="100" cy="190" r="3" fill="#014DFC" filter="url(#svg-glow-connect-light)" />
             </svg>
 
             <div className="relative z-20 flex flex-col justify-between h-full min-h-[320px]">
@@ -269,7 +277,21 @@ export default function Home({ setCurrentPage }: HomeProps) {
                   <div className="w-9 h-9 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
                     <Mail size={16} className="text-blue-600" />
                   </div>
-                  <a href="mailto:neuraxcognitivesolutions@gmail.com" className="hover:text-blue-600 transition-colors font-medium">neuraxcognitivesolutions@gmail.com</a>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <button 
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className="hover:text-blue-600 transition-colors font-medium text-left cursor-pointer"
+                      title="Click to copy email"
+                    >
+                      neuraxcognitivesolutions@gmail.com
+                    </button>
+                    {copied && (
+                      <span className="inline-flex items-center gap-1 text-emerald-600 text-xs font-bold transition-all duration-300">
+                        <Check size={14} className="stroke-[3]" /> Copied!
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

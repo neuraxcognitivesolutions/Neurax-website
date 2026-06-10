@@ -1,82 +1,59 @@
 import { useState } from 'react';
-import { Cookie, Monitor, Settings, Globe } from 'lucide-react';
-import { BrainHero } from '../components/BrainViz';
+import { Cookie, Monitor, Settings, Globe, Check } from 'lucide-react';
 
-const sections = [
-  'What Are Cookies?',
-  'How We Use Cookies',
-  'Types of Cookies',
-  'Managing Cookies',
-  'Third-Party Cookies',
-  'Updates',
-  'Contact Us'
+const cookieItems = [
+  {
+    icon: <Cookie size={20} className="text-blue-600" />,
+    title: '1. What Are Cookies?',
+    desc: 'Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences and improve your experience.'
+  },
+  {
+    icon: <Monitor size={20} className="text-blue-600" />,
+    title: '2. How We Use Cookies',
+    desc: 'We use cookies to enhance website functionality, analyze site performance, understand user behavior, and personalize content.'
+  },
+  {
+    icon: <Settings size={20} className="text-blue-600" />,
+    title: '4. Managing Cookies',
+    desc: 'You can control or delete cookies through your browser settings. Disabling cookies may affect the functionality of our website.'
+  },
+  {
+    icon: <Globe size={20} className="text-blue-600" />,
+    title: '5. Third-Party Cookies',
+    desc: 'We may use third-party services (e.g., analytics providers) that set cookies to help us understand website traffic and usage.'
+  }
 ];
 
 export default function CookiePolicy() {
-  const [active, setActive] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("neuraxcognitivesolutions@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="pt-[70px]">
-      <section className="hero-gradient py-12 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-3">Legal</p>
-            <h1 className="text-slate-900 text-4xl font-bold mb-3">Cookie Policy</h1>
-            <p className="text-slate-500 text-sm mb-4">Last updated: May 20, 2025</p>
-            <p className="text-slate-655 text-sm leading-relaxed max-w-lg">
-              This Cookie Policy explains how NeuraX Cognitive Solutions Pvt. Ltd. ("NeuraX", "we", "our", "us") uses cookies and similar technologies on our website.
-            </p>
-          </div>
-          <div className="flex justify-end">
-            <div className="w-64">
-              <BrainHero />
-            </div>
-          </div>
+      {/* Hero */}
+      <section className="hero-gradient py-16 border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+          <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-3">Legal</p>
+          <h1 className="text-slate-900 text-4xl font-bold mb-4">Cookie Policy</h1>
+          <p className="text-slate-655 text-sm leading-relaxed max-w-xl">
+            This Cookie Policy explains how NeuraX Cognitive Solutions Pvt. Ltd. ("NeuraX", "we", "our", "us") uses cookies and similar technologies on our website.
+          </p>
         </div>
       </section>
 
       {/* Content */}
       <section className="py-16 relative overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-8 relative z-10">
-          <div className="lg:col-span-1">
-            <div className="glass-panel rounded-2xl p-4 sticky top-24 bg-slate-50/50">
-              {sections.map((s, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`w-full text-left text-sm py-2 px-3 rounded mb-1 transition-colors ${active === i ? 'bg-blue-600 text-white font-semibold' : 'text-slate-655 hover:bg-slate-100 hover:text-slate-900'}`}
-                >
-                  {i + 1}. {s}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-3">
+        <div className="max-w-3xl mx-auto px-6 relative z-10">
+          {/* Main */}
+          <div className="w-full">
             <div className="glass-panel rounded-2xl p-8 md:p-10 bg-white">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                {[
-                  {
-                    icon: <Cookie size={20} className="text-blue-600" />,
-                    title: '1. What Are Cookies?',
-                    desc: 'Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences and improve your experience.'
-                  },
-                  {
-                    icon: <Monitor size={20} className="text-blue-600" />,
-                    title: '2. How We Use Cookies',
-                    desc: 'We use cookies to enhance website functionality, analyze site performance, understand user behavior, and personalize content.'
-                  },
-                  {
-                    icon: <Settings size={20} className="text-blue-600" />,
-                    title: '4. Managing Cookies',
-                    desc: 'You can control or delete cookies through your browser settings. Disabling cookies may affect the functionality of our website.'
-                  },
-                  {
-                    icon: <Globe size={20} className="text-blue-600" />,
-                    title: '5. Third-Party Cookies',
-                    desc: 'We may use third-party services (e.g., analytics providers) that set cookies to help us understand website traffic and usage.'
-                  }
-                ].map((item, i) => (
+                {cookieItems.map((item, i) => (
                   <div key={i} className="flex items-start gap-3 bg-slate-50/50 rounded-xl p-4 border border-slate-100">
                     <div className="mt-0.5 flex-shrink-0 text-blue-600">{item.icon}</div>
                     <div>
@@ -111,7 +88,17 @@ export default function CookiePolicy() {
                 </div>
                 <div>
                   <h3 className="text-slate-900 font-bold mb-1">7. Contact Us</h3>
-                  <p>For questions about this Cookie Policy, contact us at: <span className="text-blue-600 font-semibold">neuraxcognitivesolutions@gmail.com</span></p>
+                  <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    For questions about this Cookie Policy, contact us at:
+                    <span className="inline-flex items-center gap-2">
+                      <button type="button" onClick={handleCopyEmail} className="text-blue-600 font-semibold hover:text-blue-800 transition-colors cursor-pointer" title="Click to copy email">neuraxcognitivesolutions@gmail.com</button>
+                      {copied && (
+                        <span className="inline-flex items-center gap-1 text-emerald-600 text-xs font-bold transition-all duration-300">
+                          <Check size={14} className="stroke-[3]" /> Copied!
+                        </span>
+                      )}
+                    </span>
+                  </p>
                 </div>
               </div>
 

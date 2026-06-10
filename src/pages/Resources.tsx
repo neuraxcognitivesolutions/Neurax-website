@@ -8,10 +8,10 @@ export default function Resources({ setCurrentPage }: ResourcesProps) {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-[70px] pb-12 relative overflow-hidden bg-brandBg w-full border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative z-10">
+      <section className="pt-[70px] pb-12 lg:pb-0 relative overflow-hidden bg-brandBg w-full border-b border-slate-100 lg:min-h-[500px] flex items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative lg:static z-10">
           {/* Text in left column */}
-          <div className="order-1 lg:order-1 flex flex-col items-start">
+          <div className="order-1 lg:order-1 flex flex-col items-start relative z-20">
             <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-4">Research & Resources</p>
             <h1 className="text-slate-900 text-4xl md:text-5xl font-bold leading-tight mb-4">
               Science-Backed.<br />Evidence-Driven.
@@ -23,18 +23,16 @@ export default function Resources({ setCurrentPage }: ResourcesProps) {
           </div>
 
           {/* Client dashboard illustration in right column */}
-          <div className="order-2 lg:order-2 block w-full h-[300px] sm:h-[380px] lg:h-[400px] relative overflow-hidden rounded-2xl">
+          <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
               src="/assets/client_resources_hero.png" 
               alt="NeuraX Neural Activity Dashboard" 
-              className="w-full h-full object-cover" 
+              className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
             />
-            {/* Soft Blending Gradients to dissolve into the background */}
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-brandBg to-transparent pointer-events-none lg:block hidden" />
-            <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-brandBg/60 to-transparent pointer-events-none lg:hidden block" />
-            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-brandBg via-brandBg/40 to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-brandLight/80 to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-brandBg/60 to-transparent pointer-events-none" />
+
+
+            
+
           </div>
         </div>
       </section>
@@ -147,20 +145,20 @@ export default function Resources({ setCurrentPage }: ResourcesProps) {
             <div>
               <h3 className="text-slate-900 font-bold text-base mb-4">Guided by Science.</h3>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-6">
-                <div className="bg-white rounded-lg p-2.5 flex items-center justify-center h-16 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-lg p-2 flex items-center justify-center h-20 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
                   <img src="/assets/who.webp" alt="World Health Organization" className="max-h-full max-w-full object-contain" />
                 </div>
-                <div className="bg-white rounded-lg p-2.5 flex items-center justify-center h-16 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-lg p-2 flex items-center justify-center h-20 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
                   <img src="/assets/icmr.webp" alt="Indian Council of Medical Research (ICMR)" className="max-h-full max-w-full object-contain" />
                 </div>
-                <div className="bg-white rounded-lg p-2.5 flex items-center justify-center h-16 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-lg p-1.5 flex items-center justify-center h-20 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
                   <img src="/assets/america.webp" alt="American Heart Association" className="max-h-full max-w-full object-contain" />
                 </div>
-                <div className="bg-white rounded-lg p-2.5 flex items-center justify-center h-16 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
+                <div className="bg-white rounded-lg p-2 flex items-center justify-center h-20 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300">
                   <img src="/assets/lancet.webp" alt="The Lancet" className="max-h-full max-w-full object-contain" />
                 </div>
-                <div className="bg-white rounded-lg p-2.5 flex items-center justify-center h-16 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300 col-span-2 sm:col-span-1">
-                  <img src="/assets/nih.webp" alt="National Institutes of Health (NIH)" className="max-h-full max-w-full object-contain" />
+                <div className="bg-white rounded-lg p-1.5 flex items-center justify-center h-20 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300 col-span-2 sm:col-span-1">
+                  <img src="/assets/nih.png" alt="National Institutes of Health (NIH)" className="max-h-full max-w-full object-contain" />
                 </div>
               </div>
             </div>

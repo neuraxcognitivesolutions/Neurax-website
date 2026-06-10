@@ -1,67 +1,33 @@
 import { useState } from 'react';
-import { User, Brain, Monitor, FileText } from 'lucide-react';
-import { BrainSide } from '../components/BrainViz';
-
-const sections = [
-  'Information We Collect',
-  'How We Use Information',
-  'Information Sharing',
-  'Data Security',
-  'Your Rights',
-  'Cookies & Tracking',
-  "Children's Privacy",
-  'Changes to This Policy',
-  'Contact Us'
-];
+import { User, Brain, Monitor, FileText, Check } from 'lucide-react';
 
 export default function PrivacyPolicy() {
-  const [active, setActive] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("neuraxcognitivesolutions@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="pt-[70px]">
       {/* Hero */}
-      <section className="hero-gradient py-12 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div>
-            <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-3">Legal</p>
-            <h1 className="text-slate-900 text-4xl font-bold mb-3">Privacy Policy</h1>
-            <p className="text-slate-500 text-sm mb-4">Last updated: May 20, 2025</p>
-            <p className="text-slate-650 text-sm leading-relaxed max-w-lg">
-              NeuraX Cognitive Solutions Pvt. Ltd. ("NeuraX", "we", "our", "us") is committed to protecting your privacy and ensuring the security of your personal and health-related information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information.
-            </p>
-          </div>
-          <div className="flex justify-end">
-            <div className="w-full max-w-[320px] md:max-w-[400px] aspect-[16/9] rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm bg-white">
-              <img 
-                src="/assets/client_privacy_hero.png" 
-                alt="Privacy Policy Document" 
-                className="w-full h-full object-cover" 
-              />
-            </div>
-          </div>
+      <section className="hero-gradient py-16 border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center">
+          <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-3">Legal</p>
+          <h1 className="text-slate-900 text-4xl font-bold mb-4">Privacy Policy</h1>
+          <p className="text-slate-655 text-sm leading-relaxed max-w-xl">
+            NeuraX Cognitive Solutions Pvt. Ltd. ("NeuraX", "we", "our", "us") is committed to protecting your privacy and ensuring the security of your personal and health-related information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information.
+          </p>
         </div>
       </section>
 
       {/* Content */}
       <section className="py-16 relative overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-8 relative z-10">
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="glass-panel rounded-2xl p-4 sticky top-24 bg-slate-50/50">
-              {sections.map((s, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`w-full text-left text-sm py-2 px-3 rounded mb-1 transition-colors ${active === i ? 'bg-blue-600 text-white font-semibold' : 'text-slate-650 hover:bg-slate-100 hover:text-slate-900'}`}
-                >
-                  {i + 1}. {s}
-                </button>
-              ))}
-            </div>
-          </div>
-
+        <div className="max-w-3xl mx-auto px-6 relative z-10">
           {/* Main content */}
-          <div className="lg:col-span-3">
+          <div className="w-full">
             <div className="glass-panel rounded-2xl p-8 md:p-10 bg-white">
               <h2 className="text-slate-900 text-xl font-bold mb-2">1. Information We Collect</h2>
               <p className="text-slate-600 text-sm leading-relaxed mb-6">
@@ -80,7 +46,7 @@ export default function PrivacyPolicy() {
                       {item.icon}
                     </div>
                     <h4 className="text-slate-900 font-semibold text-xs mb-1">{item.title}</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                    <p className="text-slate-555 text-xs leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -96,7 +62,7 @@ export default function PrivacyPolicy() {
                 </div>
                 <div>
                   <h3 className="text-slate-900 font-bold mb-1">3. Information Sharing</h3>
-                  <p>We do not sell your personal information. We may share information with clinical collaborators and healthcare providers involved in your care, with your consent, and as required by law.</p>
+                  <p>We do not sell your personal information. When you submit a message through our contact form, your submission data is securely transmitted to Google Forms (a third-party tool operated by Google LLC) which hosts our contact questionnaire. We may also share information with clinical collaborators and healthcare providers involved in your care, with your consent, and as required by law.</p>
                 </div>
                 <div>
                   <h3 className="text-slate-900 font-bold mb-1">4. Data Security</h3>
@@ -107,8 +73,18 @@ export default function PrivacyPolicy() {
                   <p>You have the right to access, correct, or delete your personal information. You may also withdraw consent for data processing at any time by contacting us.</p>
                 </div>
                 <div>
-                  <h3 className="text-slate-900 font-bold mb-1">9. Contact Us</h3>
-                  <p>For privacy-related queries, contact us at: <span className="text-blue-600 font-semibold">neuraxcognitivesolutions@gmail.com</span></p>
+                  <h3 className="text-slate-900 font-bold mb-1">6. Contact Us</h3>
+                  <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    For privacy-related queries, contact us at:
+                    <span className="inline-flex items-center gap-2">
+                      <button type="button" onClick={handleCopyEmail} className="text-blue-600 font-semibold hover:text-blue-800 transition-colors cursor-pointer" title="Click to copy email">neuraxcognitivesolutions@gmail.com</button>
+                      {copied && (
+                        <span className="inline-flex items-center gap-1 text-emerald-600 text-xs font-bold transition-all duration-300">
+                          <Check size={14} className="stroke-[3]" /> Copied!
+                        </span>
+                      )}
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>

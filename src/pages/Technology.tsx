@@ -8,10 +8,10 @@ export default function Technology({ setCurrentPage }: TechnologyProps) {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-[70px] pb-12 relative overflow-hidden bg-brandBg w-full border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative z-10">
+      <section className="pt-[70px] pb-12 lg:pb-0 relative overflow-hidden bg-brandBg w-full border-b border-slate-100 lg:min-h-[500px] flex items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative lg:static z-10">
           {/* Text in left column */}
-          <div className="order-1 lg:order-1 flex flex-col items-start">
+          <div className="order-1 lg:order-1 flex flex-col items-start relative z-20">
             <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-4">Our Technology</p>
             <h1 className="text-slate-900 text-4xl md:text-5xl font-bold leading-tight mb-4">
               The Intelligence Layer Behind Recovery
@@ -23,18 +23,19 @@ export default function Technology({ setCurrentPage }: TechnologyProps) {
           </div>
 
           {/* Client eeg session photo in right column */}
-          <div className="order-2 lg:order-2 block w-full h-[300px] sm:h-[380px] lg:h-[400px] relative overflow-hidden rounded-2xl">
+          <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
               src="/assets/client_eeg_session.jpg" 
               alt="EEG Session and Neuro-Monitoring Technology" 
-              className="w-full h-full object-cover" 
+              className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
             />
             {/* Soft Blending Gradients to dissolve into the background */}
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-brandBg to-transparent pointer-events-none lg:block hidden" />
-            <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-brandBg/60 to-transparent pointer-events-none lg:hidden block" />
-            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-brandBg via-brandBg/40 to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-brandLight/80 to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-brandBg/60 to-transparent pointer-events-none" />
+            <div 
+              className="absolute inset-y-0 left-0 w-1/3 pointer-events-none lg:block hidden" 
+              style={{
+                background: 'linear-gradient(to right, #f5f7fa 0%, #f5f7fa 10%, rgba(245, 247, 250, 0.8) 30%, transparent 100%)'
+              }}
+            />
           </div>
         </div>
       </section>

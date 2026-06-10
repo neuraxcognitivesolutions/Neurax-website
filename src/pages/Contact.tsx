@@ -1,4 +1,4 @@
-import { Building2, Microscope, Users, Shield, FlaskConical, BookOpen, Brain, ArrowRight, Send, Loader2 } from 'lucide-react';
+import { Building2, Microscope, Users, Shield, FlaskConical, BookOpen, Brain, ArrowRight, Send, Loader2, Check, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 
 // ==========================================
@@ -18,10 +18,20 @@ const FIELDS = {
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', org: '', subject: '', interest: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("neuraxcognitivesolutions@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    setSubmitStatus('idle');
 
     try {
       const formData = new URLSearchParams();
@@ -42,11 +52,11 @@ export default function Contact() {
         body: formData.toString()
       });
 
-      alert("Thank you! Your message has been submitted successfully.");
+      setSubmitStatus('success');
       setForm({ name: "", email: "", org: "", subject: "", interest: "", message: "" });
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Something went wrong. Please try again or email neuraxcognitivesolutions@gmail.com directly.");
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -55,10 +65,10 @@ export default function Contact() {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-[70px] pb-12 relative overflow-hidden bg-brandBg w-full border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative z-10">
+      <section className="pt-[70px] pb-12 lg:pb-0 relative overflow-hidden bg-brandBg w-full border-b border-slate-100 lg:min-h-[500px] flex items-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[380px] md:min-h-[460px] lg:min-h-[500px] w-full relative lg:static z-10">
           {/* Text in left column */}
-          <div className="order-1 lg:order-1 flex flex-col items-start">
+          <div className="order-1 lg:order-1 flex flex-col items-start relative z-20">
             <p className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-4">Partner With NeuraX</p>
             <h1 className="text-slate-900 text-4xl md:text-5xl font-bold leading-tight mb-4">
               Let's Build the Future of Neuro-Recovery <span className="text-blue-655 font-extrabold">Together.</span>
@@ -70,18 +80,19 @@ export default function Contact() {
           </div>
 
           {/* Client mockup photo in right column */}
-          <div className="order-2 lg:order-2 block w-full h-[300px] sm:h-[380px] lg:h-[400px] relative overflow-hidden rounded-2xl">
+          <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
               src="/assets/client_contact_hero.png" 
               alt="NeuraX Application Showcase" 
-              className="w-full h-full object-cover" 
+              className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
             />
             {/* Soft Blending Gradients to dissolve into the background */}
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-brandBg to-transparent pointer-events-none lg:block hidden" />
-            <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-brandBg/60 to-transparent pointer-events-none lg:hidden block" />
-            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-brandBg via-brandBg/40 to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 top-0 h-1/6 bg-gradient-to-b from-brandLight/80 to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-brandBg/60 to-transparent pointer-events-none" />
+            <div 
+              className="absolute inset-y-0 left-0 w-1/3 pointer-events-none lg:block hidden" 
+              style={{
+                background: 'linear-gradient(to right, #f5f7fa 0%, #f5f7fa 10%, rgba(245, 247, 250, 0.8) 30%, transparent 100%)'
+              }}
+            />
           </div>
         </div>
       </section>
@@ -232,6 +243,38 @@ export default function Contact() {
                   <>Send Message <Send size={16} /></>
                 )}
               </button>
+              
+              {submitStatus === 'success' && (
+                <div className="flex items-start gap-3 bg-emerald-50 rounded-xl p-4 border border-emerald-100 mt-4 animate-fade-in">
+                  <Check size={18} className="text-emerald-600 flex-shrink-0 mt-0.5 stroke-[3]" />
+                  <p className="text-emerald-800 text-sm font-medium leading-relaxed">
+                    Thank you! Your message has been submitted successfully.
+                  </p>
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="flex items-start gap-3 bg-rose-50 rounded-xl p-4 border border-rose-100 mt-4 animate-fade-in">
+                  <AlertCircle size={18} className="text-rose-600 flex-shrink-0 mt-0.5" />
+                  <div className="text-rose-800 text-sm font-medium leading-relaxed flex flex-col gap-1">
+                    <p>Something went wrong. Please try again or email us directly at:</p>
+                    <div className="flex flex-wrap items-center gap-2 mt-0.5">
+                      <button 
+                        type="button" 
+                        onClick={handleCopyEmail} 
+                        className="text-rose-900 underline font-bold hover:text-rose-950 transition-colors cursor-pointer" 
+                        title="Click to copy email"
+                      >
+                        neuraxcognitivesolutions@gmail.com
+                      </button>
+                      {copied && (
+                        <span className="inline-flex items-center gap-1 text-emerald-650 text-xs font-bold transition-all duration-300">
+                          <Check size={14} className="stroke-[3]" /> Copied!
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
             </form>
           </div>
         </div>
