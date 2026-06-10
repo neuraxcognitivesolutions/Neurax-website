@@ -23,14 +23,14 @@ export default function AboutUs() {
 
           {/* Client doctor patient photo in right column */}
           <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[58%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
-            <img 
-              src="/assets/client_doctor_patient.jpg" 
-              alt="Clinical Discussion of Brain Recovery Research" 
-              className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
+            <img
+              src="/assets/client_doctor_patient.jpg"
+              alt="Clinical Discussion of Brain Recovery Research"
+              className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]"
             />
             {/* Soft Blending Gradients to dissolve into the background */}
-            <div 
-              className="absolute inset-y-0 left-0 w-1/3 pointer-events-none lg:block hidden" 
+            <div
+              className="absolute inset-y-0 left-0 w-1/3 pointer-events-none lg:block hidden"
               style={{
                 background: 'linear-gradient(to right, #f5f7fa 0%, #f5f7fa 10%, rgba(245, 247, 250, 0.8) 30%, transparent 100%)'
               }}
@@ -96,7 +96,7 @@ export default function AboutUs() {
             <div className="relative h-56 overflow-hidden border-b border-slate-200/60">
               <img
                 src="/assets/founder_portrait.png"
-                alt="Dr Varshini, MD"
+                alt="Dr Varshini MD"
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
@@ -110,12 +110,12 @@ export default function AboutUs() {
                   NeuraX was born from a deep passion for neuroscience and a first-hand understanding of the challenges patients and families face during recovery.
                 </p>
                 <p className="text-slate-650 text-sm leading-relaxed mb-6">
-                  Our founder, Dr Varshini, MD, with a background in medicine and a keen interest in neurorehabilitation, envisioned a world where technology and empathy come together to transform lives.
+                  Our founder, Dr Varshini MD, with a background in medicine and a keen interest in neurorehabilitation, envisioned a world where technology and empathy come together to transform lives.
                 </p>
               </div>
               <div className="pt-6 border-t border-slate-100 flex items-center justify-between flex-wrap gap-4 mt-auto">
                 <div>
-                  <h4 className="text-slate-900 font-bold text-base leading-tight">Dr Varshini, MD</h4>
+                  <h4 className="text-slate-900 font-bold text-base leading-tight">Dr Varshini MD</h4>
                   <p className="text-slate-500 text-xs mt-0.5 font-medium">Founder & Medical Lead</p>
                 </div>
                 <a
