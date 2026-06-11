@@ -82,9 +82,11 @@ export default function Contact() {
           {/* Client mockup photo in right column */}
           <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
-              src="/assets/client_contact_hero.png" 
+              src="/assets/client_contact_hero.webp" 
               alt="NeuraX Application Showcase" 
               className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
+              loading="eager"
+              fetchPriority="high"
             />
             {/* Soft Blending Gradients to dissolve into the background */}
             <div 

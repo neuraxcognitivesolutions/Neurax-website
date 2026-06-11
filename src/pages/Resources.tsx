@@ -25,9 +25,11 @@ export default function Resources({ setCurrentPage }: ResourcesProps) {
           {/* Client dashboard illustration in right column */}
           <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
-              src="/assets/client_resources_hero.png" 
+              src="/assets/client_resources_hero.webp" 
               alt="NeuraX Neural Activity Dashboard" 
               className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
+              loading="eager"
+              fetchPriority="high"
             />
 
 
@@ -158,7 +160,7 @@ export default function Resources({ setCurrentPage }: ResourcesProps) {
                   <img src="/assets/lancet.webp" alt="The Lancet" className="max-h-full max-w-full object-contain" />
                 </div>
                 <div className="bg-white rounded-lg p-1.5 flex items-center justify-center h-20 shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300 col-span-2 sm:col-span-1">
-                  <img src="/assets/nih.png" alt="National Institutes of Health (NIH)" className="max-h-full max-w-full object-contain" />
+                  <img src="/assets/nih.webp" alt="National Institutes of Health (NIH)" className="max-h-full max-w-full object-contain" />
                 </div>
               </div>
             </div>

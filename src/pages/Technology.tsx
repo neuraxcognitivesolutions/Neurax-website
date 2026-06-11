@@ -25,9 +25,11 @@ export default function Technology({ setCurrentPage }: TechnologyProps) {
           {/* Client eeg session photo in right column */}
           <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
-              src="/assets/client_eeg_session.jpg" 
+              src="/assets/client_eeg_session.webp" 
               alt="EEG Session and Neuro-Monitoring Technology" 
               className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
+              loading="eager"
+              fetchPriority="high"
             />
             {/* Soft Blending Gradients to dissolve into the background */}
             <div 
@@ -97,17 +99,17 @@ export default function Technology({ setCurrentPage }: TechnologyProps) {
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               {
-                img: '/assets/client_stylus.png',
+                img: '/assets/client_stylus.webp',
                 title: 'Smart Neuro-Stylus',
                 desc: 'Next-gen digital tools designed to capture cognitive interactions naturally and accurately.'
               },
               {
-                img: '/assets/client_watch.png',
+                img: '/assets/client_watch.webp',
                 title: 'Neuro-Monitoring Wearables',
                 desc: 'Wearable technology for continuous monitoring of neurological and behavioral indicators.'
               },
               {
-                img: '/assets/client_connected.png',
+                img: '/assets/client_connected.webp',
                 title: 'Connected Ecosystem',
                 desc: 'An integrated ecosystem connecting patients, clinicians, and care providers seamlessly.'
               }

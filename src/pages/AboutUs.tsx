@@ -24,9 +24,11 @@ export default function AboutUs() {
           {/* Client doctor patient photo in right column */}
           <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[58%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img
-              src="/assets/client_doctor_patient.jpg"
+              src="/assets/client_doctor_patient.webp"
               alt="Clinical Discussion of Brain Recovery Research"
               className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]"
+              loading="eager"
+              fetchPriority="high"
             />
             {/* Soft Blending Gradients to dissolve into the background */}
             <div
@@ -95,7 +97,7 @@ export default function AboutUs() {
           <div className="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between h-full bg-white">
             <div className="relative h-56 overflow-hidden border-b border-slate-200/60">
               <img
-                src="/assets/founder_portrait.png"
+                src="/assets/founder_portrait.webp"
                 alt="Dr Varshini MD"
                 className="w-full h-full object-cover object-top"
               />

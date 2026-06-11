@@ -45,9 +45,11 @@ export default function Home({ setCurrentPage }: HomeProps) {
           {/* Client illustration photo in right column */}
           <div className="order-2 lg:order-2 w-full h-auto lg:absolute lg:top-[70px] lg:bottom-0 lg:right-0 lg:w-[55%] lg:h-[calc(100%-70px)] overflow-hidden z-0">
             <img 
-              src="/assets/client_futuristic_lab.jpg" 
+              src="/assets/client_futuristic_lab.webp" 
               alt="NeuraX Neural Technology Laboratory" 
               className="w-full h-auto lg:h-full lg:object-cover scale-[1.03]" 
+              loading="eager"
+              fetchPriority="high"
             />
             {/* Soft Blending Gradients to dissolve into the background */}
             <div 
@@ -111,7 +113,7 @@ export default function Home({ setCurrentPage }: HomeProps) {
           </div>
           <div className="flex-shrink-0 flex items-center justify-center w-full lg:w-auto bg-transparent">
             <img 
-              src="/assets/isb-logo-v5.png" 
+              src="/assets/isb-logo-v5.webp" 
               alt="Indian School of Business (ISB)" 
               className="w-72 sm:w-80 md:w-96 lg:w-[380px] h-auto object-contain mix-blend-multiply opacity-95 hover:opacity-100 transition-opacity" 
             />
